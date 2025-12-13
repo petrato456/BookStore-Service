@@ -1,6 +1,5 @@
-export type UserRole = "STAFF" | "CUSTOMER";
-export type UserStatus = "ACTIVE" | "BLOCKED";
-
+export type UserRole = 'STAFF' | 'CUSTOMER';
+export type UserStatus = 'ACTIVE' | 'BLOCKED';
 
 interface UserProps {
   id: string;
@@ -24,33 +23,33 @@ export class User {
     this.name = props.name;
     this.email = props.email;
     this.role = props.role;
-    this.status = props.status ?? "ACTIVE";
+    this.status = props.status ?? 'ACTIVE';
   }
 
   private validate(props: UserProps) {
-    if (!props.id) throw new Error("User must have an id");
-    if (!props.name) throw new Error("User must have a name");
-    if (!props.email) throw new Error("User must have an email");
+    if (!props.id) throw new Error('User must have an id');
+    if (!props.name) throw new Error('User must have a name');
+    if (!props.email) throw new Error('User must have an email');
 
-    if (!["STAFF", "CUSTOMER"].includes(props.role)) {
-      throw new Error("Invalid user role");
+    if (!['STAFF', 'CUSTOMER'].includes(props.role)) {
+      throw new Error('Invalid user role');
     }
   }
 
   isActive(): boolean {
-    return this.status === "ACTIVE";
+    return this.status === 'ACTIVE';
   }
 
   canRentBooks(): boolean {
-    return this.isActive() && this.role === "CUSTOMER";
+    return this.isActive() && this.role === 'CUSTOMER';
   }
 
   block() {
-    this.status = "BLOCKED";
+    this.status = 'BLOCKED';
   }
 
   unblock() {
-    this.status = "ACTIVE";
+    this.status = 'ACTIVE';
   }
 
   getId() {
