@@ -14,8 +14,8 @@ export class CreateUserUseCase {
   constructor(private userRepository: UserRepository) {}
   async execute(input: CreateUserInput) {
     const userAlreadyExists = await this.userRepository.findById(input.email);
-    if (!userAlreadyExists) {
-      throw new Error('User not found');
+    if (userAlreadyExists) {
+      throw new Error('User already exists');
     }
 
     const hashPassword = await bcrypt.hash(input.passwordHash, 10);
