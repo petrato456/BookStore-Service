@@ -5,6 +5,7 @@ interface UserProps {
   id: string;
   name: string;
   email: string;
+  passwordHash: string;
   role: UserRole;
   status?: UserStatus;
 }
@@ -13,6 +14,7 @@ export class User {
   private readonly id: string;
   private readonly name: string;
   private readonly email: string;
+  private readonly passwordHash: string;
   private role: UserRole;
   private status: UserStatus;
 
@@ -22,6 +24,7 @@ export class User {
     this.id = props.id;
     this.name = props.name;
     this.email = props.email;
+    this.passwordHash = props.passwordHash;
     this.role = props.role;
     this.status = props.status ?? 'ACTIVE';
   }

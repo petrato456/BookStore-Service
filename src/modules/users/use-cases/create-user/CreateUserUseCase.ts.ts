@@ -1,9 +1,12 @@
 import { User } from '../../domain/User';
 import { UserRepository } from '../../repositories/UserRepository';
+import bcrypt from 'bcrypt';
+
 interface CreateUserInput {
   id: string;
   name: string;
   email: string;
+  passwordHash: string;
   role: 'STAFF' | 'CUSTOMER';
 }
 
@@ -15,10 +18,13 @@ export class CreateUserUseCase {
       throw new Error('User not found');
     }
 
+    const hashPassword = await bcrypt.hash(input.passwordHash, 10);
+
     const user = new User({
       id: input.id,
-      email: input.email,
       name: input.name,
+      email: input.email,
+      passwordHash: hashPassword,
       role: input.role,
     });
     await this.userRepository.save(user);
