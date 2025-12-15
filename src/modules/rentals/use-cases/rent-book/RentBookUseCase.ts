@@ -1,5 +1,5 @@
 import { BookCopyRepository } from '../../../books/repositories/BookCopyRepository';
-import { UserRepository } from '../../../users/repositories/UserRepository';
+import { UserRepository } from '../../../users/domain/repositories/UserRepository';
 import { Rental } from '../../domain/Rental';
 import { RentalRepository } from '../../repositories/RentalRepository';
 

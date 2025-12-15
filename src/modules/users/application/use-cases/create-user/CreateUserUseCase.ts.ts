@@ -1,5 +1,5 @@
-import { User } from '../../domain/User';
-import { UserRepository } from '../../repositories/UserRepository';
+import { User } from '../../../domain/entities/User';
+import { UserRepository } from '../../../domain/repositories/UserRepository';
 import bcrypt from 'bcrypt';
 
 interface CreateUserInput {
